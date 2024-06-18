@@ -13,7 +13,7 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.email "me@buxxed.me"
+          git config --global user.email "me@herobuxx.me"
           git config --global user.name "HeroBuxx"
 
       - name: Pull changes from upstream and Push
