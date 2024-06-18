@@ -26,8 +26,6 @@ jobs:
       - name: Customize commit message and push changes
         env:
           PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
-        env:
-          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
         run: |
           COMMIT_MESSAGE="Merge changes from LLVM\n\nHEAD: $(git rev-parse HEAD)"
           git commit -am "$COMMIT_MESSAGE"
