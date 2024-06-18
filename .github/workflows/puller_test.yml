@@ -18,6 +18,8 @@ jobs:
 
       - name: Pull changes from upstream
         run: |
+          git clone https://github.com/liliumproject/llvm-project
+          cd llvm-project
           git remote add upstream https://github.com/llvm/llvm-project.git
           git fetch upstream
           git checkout main
