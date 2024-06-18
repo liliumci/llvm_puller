@@ -1,0 +1,36 @@
+name: Update LLVM from upstream
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  update-llvm:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "me@buxxed.me"
+          git config --global user.name "HeroBuxx"
+
+      - name: Pull changes from upstream
+        run: |
+          git remote add upstream https://github.com/llvm/llvm-project.git
+          git fetch upstream
+          git checkout main
+          git merge upstream/main --no-edit
+
+      - name: Customize commit message and push changes
+        env:
+          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+        env:
+          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+        run: |
+          COMMIT_MESSAGE="Merge changes from LLVM\n\nHEAD: $(git rev-parse HEAD)"
+          git commit -am "$COMMIT_MESSAGE"
+          git remote set-url origin https://herobuxx:${PUSH_TOKEN}@github.com/liliumproject/llvm-project.git
+          git push origin main
