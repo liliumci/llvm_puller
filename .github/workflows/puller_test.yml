@@ -26,8 +26,5 @@ jobs:
           git fetch upstream
           git checkout main
           git merge upstream/main --no-edit
-          cd llvm-project
-          COMMIT_MESSAGE="Merge changes from LLVM\n\nHEAD: $(git rev-parse HEAD)"
-          git commit -am "$COMMIT_MESSAGE"
           git remote set-url origin https://herobuxx:${PUSH_TOKEN}@github.com/liliumproject/llvm-project.git
           git push origin main
