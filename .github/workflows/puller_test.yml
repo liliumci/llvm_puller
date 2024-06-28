@@ -20,7 +20,7 @@ jobs:
         env:
           PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
         run: |
-          git clone https://github.com/liliumproject/llvm-project-old
+          git clone https://github.com/liliumproject/llvm-project
           cd llvm-project-old
           git remote add upstream https://github.com/llvm/llvm-project.git
           git fetch upstream
